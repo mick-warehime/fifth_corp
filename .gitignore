@@ -3,6 +3,6 @@
 *coverage_html*
 .idea
 logging/
-.mypy_cache
+.mypy_cache/
 *__pycache__*
 *htmlcov*
