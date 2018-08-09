@@ -4,10 +4,12 @@ from typing import Tuple
 from .keybindings import Keybindings
 
 
+# TODO - create mapping of keys to human readable 263 -> left arrow and a look up method
 class Keyboard(EventListener):
     def __init__(self, event_manager: EventManager) -> None:
         super(Keyboard, self).__init__(event_manager)
         self.bindings = Keybindings()
+        self.bindings.load()
 
     def notify(self, event: Event) -> None:
         if event == Event.TICK:
@@ -26,6 +28,7 @@ class Keyboard(EventListener):
                 self.handle_mouse_click()
 
     def handle_keypress(self, pg_event: pygame.event) -> None:
+
         if pg_event.key == pygame.K_ESCAPE:
             self.event_manager.post(Event.QUIT)
         elif self.get_binding(pg_event.unicode) != Event.NONE:
@@ -33,15 +36,15 @@ class Keyboard(EventListener):
         else:
             # post any other keys to the message queue for everyone
             # else to see
-            self. post_input_event(InputEvent.KEYDOWN, pg_event.unicode)
+            self. post_input_event(Event.KEYDOWN, pg_event.unicode)
 
     def handle_mouse_click(self) -> None:
         self.post_input_event(
             InputEvent.MOUSE_CLICK,
             key=pygame.mouse.get_pressed())
 
-    def post_input_event(self, name: str, key: str = '') -> None:
-        input = InputEvent(name=name, key=key, mouse=self.mouse_pos())
+    def post_input_event(self, event: Event, key: str = '') -> None:
+        input = InputEvent(event=event, key=key, mouse=self.mouse_pos())
         self.event_manager.post(input)
 
     def mouse_pos(self) -> Tuple[int, int]:

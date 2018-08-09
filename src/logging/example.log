@@ -1,20 +1,58 @@
-2018-08-08 18:07:54,490 0.001 [DEBUG]  registered listener 1 <game.Game object at 0x10b8c0438>
-2018-08-08 18:07:54,985 0.001 [DEBUG]  registered listener 2 <input.keyboard.Keyboard object at 0x10bac69e8>
-2018-08-08 18:07:54,986 0.001 [DEBUG]  
+2018-08-08 21:05:11,577 0.001 [DEBUG]  registered listener 1 <game.Game object at 0x109e6f588>
+2018-08-08 21:05:12,056 0.001 [DEBUG]  registered listener 2 <input.keyboard.Keyboard object at 0x10a1fbf98>
+2018-08-08 21:05:12,057 0.001 [DEBUG]  Loaded keybindings
+2018-08-08 21:05:12,057 0.001 [DEBUG]  
 KEY BINDINGS
 --------------------
-y: Event.CLOSE_SETTINGS
-x: Event.OPEN_SETTINGS
+y: CLOSE_SETTINGS
+x: OPEN_SETTINGS
 --------------------
-2018-08-08 18:07:54,986 0.001 [DEBUG]  registered listener 3 <controller.launch_controller.LaunchController object at 0x10c0b1e80>
-2018-08-08 18:07:54,986 0.001 [DEBUG]  registered listener 4 <model.launch_model.LaunchModel object at 0x10c0b1d68>
-2018-08-08 18:07:54,987 0.001 [DEBUG]  registered listener 5 <view.launch_view.LaunchView object at 0x10c0b1cc0>
-2018-08-08 18:07:56,116 0.001 [DEBUG]  EVENT: Event.OPEN_SETTINGS
-2018-08-08 18:07:56,116 0.001 [DEBUG]  registered listener 6 <controller.settings_controller.SettingsController object at 0x10c0b1b38>
-2018-08-08 18:07:56,116 0.001 [DEBUG]  registered listener 7 <model.settings_model.SettingsModel object at 0x10c0b1eb8>
-2018-08-08 18:07:56,116 0.001 [DEBUG]  registered listener 8 <view.settings_view.SettingsView object at 0x10c0c1128>
-2018-08-08 18:07:56,873 0.001 [DEBUG]  EVENT: Event.CLOSE_SETTINGS
-2018-08-08 18:07:56,873 0.001 [DEBUG]  registered listener 6 <controller.launch_controller.LaunchController object at 0x10c0b1d68>
-2018-08-08 18:07:56,873 0.001 [DEBUG]  registered listener 7 <model.launch_model.LaunchModel object at 0x10c0b1ba8>
-2018-08-08 18:07:56,873 0.001 [DEBUG]  registered listener 8 <view.launch_view.LaunchView object at 0x10c0b1b70>
-2018-08-08 18:07:57,278 0.001 [DEBUG]  EVENT: Event.QUIT
+2018-08-08 21:05:12,057 0.001 [DEBUG]  registered listener 3 <controller.launch_controller.LaunchController object at 0x10a2037b8>
+2018-08-08 21:05:12,057 0.001 [DEBUG]  registered listener 4 <model.launch_model.LaunchModel object at 0x10a65e860>
+2018-08-08 21:05:12,057 0.001 [DEBUG]  registered listener 5 <view.launch_view.LaunchView object at 0x10a65e748>
+2018-08-08 21:05:12,650 0.001 [DEBUG]  EVENT: KEYDOWN, key=a, mouse=(916, 511)
+2018-08-08 21:05:12,938 0.001 [DEBUG]  EVENT: KEYDOWN, key=a, mouse=(916, 511)
+2018-08-08 21:05:13,072 0.001 [DEBUG]  EVENT: KEYDOWN, key=s, mouse=(916, 511)
+2018-08-08 21:05:13,139 0.001 [DEBUG]  EVENT: KEYDOWN, key=d, mouse=(916, 511)
+2018-08-08 21:05:13,238 0.001 [DEBUG]  EVENT: KEYDOWN, key=f, mouse=(916, 511)
+2018-08-08 21:05:13,339 0.001 [DEBUG]  EVENT: KEYDOWN, key=;, mouse=(916, 511)
+2018-08-08 21:05:13,408 0.001 [DEBUG]  EVENT: KEYDOWN, key=l, mouse=(916, 511)
+2018-08-08 21:05:13,474 0.001 [DEBUG]  EVENT: KEYDOWN, key=k, mouse=(916, 511)
+2018-08-08 21:05:13,543 0.001 [DEBUG]  EVENT: KEYDOWN, key=j, mouse=(916, 511)
+2018-08-08 21:05:14,014 0.001 [DEBUG]  EVENT: KEYDOWN, key=q, mouse=(916, 511)
+2018-08-08 21:05:14,114 0.001 [DEBUG]  EVENT: KEYDOWN, key=w, mouse=(916, 511)
+2018-08-08 21:05:14,181 0.001 [DEBUG]  EVENT: KEYDOWN, key=e, mouse=(916, 511)
+2018-08-08 21:05:14,215 0.001 [DEBUG]  EVENT: KEYDOWN, key=p, mouse=(916, 511)
+2018-08-08 21:05:14,283 0.001 [DEBUG]  EVENT: KEYDOWN, key=o, mouse=(916, 511)
+2018-08-08 21:05:14,317 0.001 [DEBUG]  EVENT: KEYDOWN, key=r, mouse=(916, 511)
+2018-08-08 21:05:14,351 0.001 [DEBUG]  EVENT: KEYDOWN, key=i, mouse=(916, 511)
+2018-08-08 21:05:14,456 0.001 [DEBUG]  EVENT: KEYDOWN, key=u, mouse=(916, 511)
+2018-08-08 21:05:14,520 0.001 [DEBUG]  EVENT: KEYDOWN, key=q, mouse=(916, 511)
+2018-08-08 21:05:14,586 0.001 [DEBUG]  EVENT: KEYDOWN, key=t, mouse=(916, 511)
+2018-08-08 21:05:14,653 0.001 [DEBUG]  EVENT: CLOSE_SETTINGS
+2018-08-08 21:05:16,167 0.001 [DEBUG]  EVENT: KEYDOWN, key=, mouse=(916, 511)
+2018-08-08 21:05:16,471 0.001 [DEBUG]  EVENT: KEYDOWN, key=z, mouse=(916, 511)
+2018-08-08 21:05:16,809 0.001 [DEBUG]  EVENT: OPEN_SETTINGS
+2018-08-08 21:05:16,809 0.001 [DEBUG]  registered listener 6 <controller.settings_controller.SettingsController object at 0x10a65e898>
+2018-08-08 21:05:16,810 0.001 [DEBUG]  registered listener 7 <model.settings_model.SettingsModel object at 0x10a65e5c0>
+2018-08-08 21:05:16,810 0.001 [DEBUG]  registered listener 8 <view.settings_view.SettingsView object at 0x10a65e9e8>
+2018-08-08 21:05:17,754 0.001 [DEBUG]  EVENT: CLOSE_SETTINGS
+2018-08-08 21:05:17,754 0.001 [DEBUG]  registered listener 6 <controller.launch_controller.LaunchController object at 0x10a65e860>
+2018-08-08 21:05:17,754 0.001 [DEBUG]  registered listener 7 <model.launch_model.LaunchModel object at 0x10a65e668>
+2018-08-08 21:05:17,754 0.001 [DEBUG]  registered listener 8 <view.launch_view.LaunchView object at 0x10a65e588>
+2018-08-08 21:05:18,193 0.001 [DEBUG]  EVENT: KEYDOWN, key=a, mouse=(916, 511)
+2018-08-08 21:05:18,193 0.001 [DEBUG]  EVENT: KEYDOWN, key=;, mouse=(916, 511)
+2018-08-08 21:05:18,258 0.001 [DEBUG]  EVENT: KEYDOWN, key=l, mouse=(916, 511)
+2018-08-08 21:05:18,292 0.001 [DEBUG]  EVENT: KEYDOWN, key=s, mouse=(916, 511)
+2018-08-08 21:05:18,326 0.001 [DEBUG]  EVENT: KEYDOWN, key=k, mouse=(916, 511)
+2018-08-08 21:05:18,359 0.001 [DEBUG]  EVENT: KEYDOWN, key=d, mouse=(916, 511)
+2018-08-08 21:05:18,393 0.001 [DEBUG]  EVENT: KEYDOWN, key=j, mouse=(916, 511)
+2018-08-08 21:05:18,426 0.001 [DEBUG]  EVENT: KEYDOWN, key=f, mouse=(916, 511)
+2018-08-08 21:05:18,595 0.001 [DEBUG]  EVENT: KEYDOWN, key=a, mouse=(916, 511)
+2018-08-08 21:05:18,595 0.001 [DEBUG]  EVENT: KEYDOWN, key=l, mouse=(916, 511)
+2018-08-08 21:05:18,595 0.001 [DEBUG]  EVENT: KEYDOWN, key=;, mouse=(916, 511)
+2018-08-08 21:05:18,664 0.001 [DEBUG]  EVENT: KEYDOWN, key=s, mouse=(916, 511)
+2018-08-08 21:05:18,665 0.001 [DEBUG]  EVENT: KEYDOWN, key=k, mouse=(916, 511)
+2018-08-08 21:05:18,665 0.001 [DEBUG]  EVENT: KEYDOWN, key=d, mouse=(916, 511)
+2018-08-08 21:05:18,695 0.001 [DEBUG]  EVENT: KEYDOWN, key=j, mouse=(916, 511)
+2018-08-08 21:05:18,996 0.001 [DEBUG]  EVENT: QUIT
