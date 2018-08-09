@@ -11,8 +11,7 @@ def initialize_logging() -> None:
     except OSError:
         pass
 
-    fmt = "%(asctime)s {} [%(levelname)s]  %(message)s".format(
-        constants.VERSION)
+    fmt = "%(asctime)s {} [%(levelname)s]  %(message)s".format(constants.VERSION)
     formatter = logging.Formatter(fmt)
     logger = logging.getLogger()
     logger.setLevel("DEBUG")
