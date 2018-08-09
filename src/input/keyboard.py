@@ -4,7 +4,8 @@ from typing import Tuple
 from .keybindings import Keybindings
 
 
-# TODO - create mapping of keys to human readable 263 -> left arrow and a look up method
+# TODO - create mapping of keys to human readable 263 -> left arrow and a
+# look up method
 class Keyboard(EventListener):
     def __init__(self, event_manager: EventManager) -> None:
         super(Keyboard, self).__init__(event_manager)

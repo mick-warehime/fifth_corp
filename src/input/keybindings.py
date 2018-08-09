@@ -28,10 +28,21 @@ class Keybindings(object):
 
     def save(self) -> None:
         with open(self.preference_file, 'w') as bindings_file:
-            writer = csv.DictWriter(bindings_file, fieldnames=[self.binding_field, self.key_field])
+            writer = csv.DictWriter(
+                bindings_file, fieldnames=[
+                    self.binding_field, self.key_field])
             writer.writeheader()
             for key, binding in self.bindings.items():
-                writer.writerow({self.binding_field: binding, self.key_field: key})
+                writer.writerow(
+                    {self.binding_field: binding, self.key_field: key})
+
+    def update_binding(self, key: str, event: Event) -> None:
+        self.bindings[key] = event
+
+        self.save()
+
+        logging.debug('Updated keybindings')
+        logging.debug(str(self))
 
     def get_binding(self, key: str) -> Event:
         return self.bindings.get(key, Event.NONE)
