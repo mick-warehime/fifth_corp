@@ -3,14 +3,16 @@ from enum import Enum
 
 
 class Event(Enum):
-    NONE = 'none'
-    QUIT = 'quit'
-    TICK = 'tick'
-    OPEN_SETTINGS = 'open settings'
-    CLOSE_SETTINGS = 'close settings'
-    KEYDOWN = 'keydown'
-    KEYUP = 'keyup'
-    MOUSE_CLICK = 'mouse click'
+    NONE = 'NONE'
+    QUIT = 'QUIT'
+    TICK = 'TICK'
+    KEYDOWN = 'KEYDOWN'
+    KEYUP = 'KEYUP'
+    MOUSE_CLICK = 'MOUSE_CLICK'
+
+    # bindable events
+    OPEN_SETTINGS = 'OPEN_SETTINGS'
+    CLOSE_SETTINGS = 'CLOSE_SETTINGS'
 
     # comparing enums gives wrong result without this
     # has to do with this file being imported twice
@@ -19,6 +21,9 @@ class Event(Enum):
         if isinstance(other, Enum):
             return self.value == other.value
         return False
+
+    def __str__(self) -> str:
+        return self.value
 
 
 class InputEvent(object):

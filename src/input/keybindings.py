@@ -10,10 +10,9 @@ class Keybindings(object):
     key_field = 'key'
 
     def __init__(self) -> None:
-        self.bindings = self.load()
-        logging.debug(str(self))
+        self.bindings: Dict[str, Event] = dict()
 
-    def load(self) -> Dict[str, Event]:
+    def load(self) -> None:
         bindings: Dict[str, Event] = dict()
         with open(self.preference_file) as bindings_file:
             reader = csv.DictReader(bindings_file)
@@ -21,13 +20,18 @@ class Keybindings(object):
                 key = row[self.key_field]
                 binding = row[self.binding_field]
                 bindings[key] = Event[binding]
-        return bindings
+
+        self.bindings = bindings
+
+        logging.debug('Loaded keybindings')
+        logging.debug(str(self))
 
     def save(self) -> None:
         with open(self.preference_file, 'w') as bindings_file:
-            writer = csv.writer(bindings_file)
-            for key, value in self.bindings.items():
-                writer.writerow([key, value])
+            writer = csv.DictWriter(bindings_file, fieldnames=[self.binding_field, self.key_field])
+            writer.writeheader()
+            for key, binding in self.bindings.items():
+                writer.writerow({self.binding_field: binding, self.key_field: key})
 
     def get_binding(self, key: str) -> Event:
         return self.bindings.get(key, Event.NONE)
@@ -39,6 +43,7 @@ class Keybindings(object):
         keys.append("--------------------")
         return '\n'.join(keys)
 
+    @classmethod
     def event_for_binding(self, binding: Event) -> Event:
         if binding == Event.CLOSE_SETTINGS:
             return Event.CLOSE_SETTINGS
