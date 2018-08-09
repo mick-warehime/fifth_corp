@@ -1,0 +1,20 @@
+2018-08-08 18:07:54,490 0.001 [DEBUG]  registered listener 1 <game.Game object at 0x10b8c0438>
+2018-08-08 18:07:54,985 0.001 [DEBUG]  registered listener 2 <input.keyboard.Keyboard object at 0x10bac69e8>
+2018-08-08 18:07:54,986 0.001 [DEBUG]  
+KEY BINDINGS
+--------------------
+y: Event.CLOSE_SETTINGS
+x: Event.OPEN_SETTINGS
+--------------------
+2018-08-08 18:07:54,986 0.001 [DEBUG]  registered listener 3 <controller.launch_controller.LaunchController object at 0x10c0b1e80>
+2018-08-08 18:07:54,986 0.001 [DEBUG]  registered listener 4 <model.launch_model.LaunchModel object at 0x10c0b1d68>
+2018-08-08 18:07:54,987 0.001 [DEBUG]  registered listener 5 <view.launch_view.LaunchView object at 0x10c0b1cc0>
+2018-08-08 18:07:56,116 0.001 [DEBUG]  EVENT: Event.OPEN_SETTINGS
+2018-08-08 18:07:56,116 0.001 [DEBUG]  registered listener 6 <controller.settings_controller.SettingsController object at 0x10c0b1b38>
+2018-08-08 18:07:56,116 0.001 [DEBUG]  registered listener 7 <model.settings_model.SettingsModel object at 0x10c0b1eb8>
+2018-08-08 18:07:56,116 0.001 [DEBUG]  registered listener 8 <view.settings_view.SettingsView object at 0x10c0c1128>
+2018-08-08 18:07:56,873 0.001 [DEBUG]  EVENT: Event.CLOSE_SETTINGS
+2018-08-08 18:07:56,873 0.001 [DEBUG]  registered listener 6 <controller.launch_controller.LaunchController object at 0x10c0b1d68>
+2018-08-08 18:07:56,873 0.001 [DEBUG]  registered listener 7 <model.launch_model.LaunchModel object at 0x10c0b1ba8>
+2018-08-08 18:07:56,873 0.001 [DEBUG]  registered listener 8 <view.launch_view.LaunchView object at 0x10c0b1b70>
+2018-08-08 18:07:57,278 0.001 [DEBUG]  EVENT: Event.QUIT
