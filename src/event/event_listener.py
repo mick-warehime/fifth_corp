@@ -1,13 +1,13 @@
-import listener
-from event_manager import EventManager
-import events
+from .listener import Listener
+from .event_manager import EventManager
+from .events import Event
 
 
-class EventListener(listener.Listener):
+class EventListener(Listener):
 
     def __init__(self, event_manager: EventManager) -> None:
         event_manager.register(self)
         self.event_manager = event_manager
 
-    def notify(self, event: events.Event) -> None:
+    def notify(self, event: Event) -> None:
         pass

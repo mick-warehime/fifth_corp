@@ -1,5 +1,5 @@
 from event import EventManager
-from abstract_model import Model
+from .abstract_model import Model
 
 
 class LaunchModel(Model):

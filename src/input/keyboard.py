@@ -1,7 +1,7 @@
 import pygame
 from event import EventManager, Event, EventListener, InputEvent
 from typing import Tuple
-from keybindings import Keybindings
+from .keybindings import Keybindings
 
 
 class Keyboard(EventListener):
