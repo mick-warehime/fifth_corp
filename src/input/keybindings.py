@@ -29,8 +29,7 @@ class Keybindings(object):
     def save(self) -> None:
         with open(self.preference_file, 'w') as bindings_file:
             writer = csv.DictWriter(
-                bindings_file, fieldnames=[
-                    self.binding_field, self.key_field])
+                bindings_file, fieldnames=[self.binding_field, self.key_field])
             writer.writeheader()
             for key, binding in self.bindings.items():
                 writer.writerow(
