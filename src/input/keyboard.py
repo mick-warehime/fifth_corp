@@ -1,5 +1,5 @@
 import pygame
-from event import EventManager, Event, EventListener
+from event import EventManager, Event, EventListener, InputEvent
 from typing import Tuple, List
 from .keybindings import Keybindings
 
@@ -22,18 +22,22 @@ class Keyboard(EventListener):
                 self.event_manager.post(Event(Event.QUIT))
             # handle key down events
             elif pg_event.type == pygame.KEYDOWN:
-                self.handle_keypress(pg_event.unicode, key_down=False)
+                self.handle_keypress(pg_event.unicode)
             elif pg_event.type == pygame.KEYUP:
                 pass
             elif pg_event.type == pygame.MOUSEBUTTONDOWN:
                 self.handle_mouse_click()
 
-    def handle_keypress(self, key_name: str, key_down: bool) -> None:
+    def handle_keypress(self, key_name: str) -> None:
         if self.get_binding(key_name) != Event.NONE:
             self.post_bound_event(key=key_name)
 
     def handle_mouse_click(self) -> None:
-        self.post_input_event(Event.MOUSE_CLICK, key=pygame.mouse.get_pressed())
+        mouse_event = self.mouse_event()
+        self.event_manager.post(mouse_event)
+
+    def mouse_event(self) -> InputEvent:
+        return InputEvent(event=Event.MOUSE_CLICK, key='', mouse=self.mouse_pos())
 
     def mouse_pos(self) -> Tuple[int, int]:
         return pygame.mouse.get_pos()
