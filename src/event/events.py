@@ -28,11 +28,12 @@ class Event(Enum):
 
 class InputEvent(object):
 
-    def __init__(self, event: Event, key: str,
+    def __init__(self, event: Event, key: str = '', pressed: bool = False,
                  mouse: Tuple[int, int] = (-1, -1)) -> None:
         self.event = event
         self.key = key
         self.mouse = mouse
+        self.pressed = pressed
 
     def __str__(self) -> str:
-        return '%s, key=%s, mouse=%s' % (self.event, self.key, self.mouse)
+        return '%s, key=%s, mouse=%s, pressed=%s' % (self.event, self.key, self.mouse, self.pressed)

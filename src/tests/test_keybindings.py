@@ -44,17 +44,13 @@ class KeybindingsTest(TestCase):
         self.keybindings = Keybindings()
         self.keybindings.preference_file = new_prefs_file.name
         self.keybindings.load()
-        self.assertEqual(
-            self.keybindings.get_binding('y'),
-            Event.OPEN_SETTINGS)
+        self.assertEqual(self.keybindings.get_binding('y'), Event.OPEN_SETTINGS)
 
     def test_update_settings(self) -> None:
         self.load_bindings(self.default_binding())
         self.keybindings.update_binding('y', Event.CLOSE_SETTINGS)
 
-        self.assertEqual(
-            self.keybindings.get_binding('y'),
-            Event.CLOSE_SETTINGS)
+        self.assertEqual(self.keybindings.get_binding('y'), Event.CLOSE_SETTINGS)
 
     def test_update_settings_are_saved(self) -> None:
         self.load_bindings(self.default_binding())
@@ -64,6 +60,4 @@ class KeybindingsTest(TestCase):
         self.keybindings = Keybindings()
         self.keybindings.preference_file = self.preference_file.name
         self.keybindings.load()
-        self.assertEqual(
-            self.keybindings.get_binding('y'),
-            Event.CLOSE_SETTINGS)
+        self.assertEqual(self.keybindings.get_binding('y'), Event.CLOSE_SETTINGS)

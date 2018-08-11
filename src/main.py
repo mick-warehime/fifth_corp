@@ -4,12 +4,14 @@ import os
 from constants import constants
 
 
+def clear_log(log_file: str) -> None:
+    f = open(log_file, 'r+')
+    f.truncate(0)
+
+
 def initialize_logging() -> None:
-    log_file = 'logging/example.log'
-    try:
-        os.remove(log_file)
-    except OSError:
-        pass
+    log_file = 'src/logging/game.log'
+    clear_log(log_file)
 
     fmt = "%(asctime)s {} [%(levelname)s]  %(message)s".format(constants.VERSION)
     formatter = logging.Formatter(fmt)
