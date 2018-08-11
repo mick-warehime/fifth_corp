@@ -5,7 +5,7 @@ import logging
 
 
 class Keybindings(object):
-    preference_file = 'data/bindings.pref'
+    preference_file = 'src/data/bindings.pref'
     binding_field = 'binding'
     key_field = 'key'
 

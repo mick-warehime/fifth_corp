@@ -10,7 +10,7 @@ def clear_log(log_file: str) -> None:
 
 
 def initialize_logging() -> None:
-    log_file = 'logging/game.log'
+    log_file = 'src/logging/game.log'
     clear_log(log_file)
 
     fmt = "%(asctime)s {} [%(levelname)s]  %(message)s".format(constants.VERSION)
