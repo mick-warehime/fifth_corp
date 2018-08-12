@@ -1,5 +1,5 @@
-import decision_controller
-from pyqt.splash_form import Ui_SplashForm
+import controller
+from view import Ui_SplashForm
 from PyQt5.QtWidgets import QWidget
 
 
@@ -12,6 +12,6 @@ class SplashController(QWidget, Ui_SplashForm):
         self.newgame_button.setShortcut("N")
 
     def change(self) -> None:
-        self.main = decision_controller.DecisionController()
+        self.main = controller.DecisionController()
         self.main.show()
         self.close()

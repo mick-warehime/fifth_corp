@@ -1,6 +1,5 @@
-import combat_controller
-import splash_controller
-from pyqt.decision_form import Ui_DecisionForm
+import controller
+from view import Ui_DecisionForm
 from PyQt5.QtWidgets import QWidget
 import logging
 
@@ -14,11 +13,11 @@ class DecisionController(QWidget, Ui_DecisionForm):
         self.back_button.clicked.connect(self.back)
 
     def change(self) -> None:
-        self.main = combat_controller.CombatController()
+        self.main = controller.CombatController()
         self.main.show()
         self.close()
 
     def back(self) -> None:
-        self.main = splash_controller.SplashController()
+        self.main = controller.SplashController()
         self.main.show()
         self.close()

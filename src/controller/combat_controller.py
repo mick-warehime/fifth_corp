@@ -1,4 +1,4 @@
-from pyqt.combat_form import Ui_CombatForm
+from view import Ui_CombatForm
 from PyQt5.QtWidgets import QWidget
 
 
