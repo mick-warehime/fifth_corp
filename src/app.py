@@ -1,7 +1,8 @@
-from game import Game
+import sys
 import logging
-import os
 from constants import constants
+from PyQt5.QtWidgets import QApplication
+from controller import SplashController
 
 
 def clear_log(log_file: str) -> None:
@@ -29,5 +30,7 @@ def initialize_logging() -> None:
 
 if __name__ == '__main__':
     initialize_logging()
-    g = Game()
-    g.run()
+    app = QApplication(sys.argv)
+    controller = SplashController()
+    controller.show()
+    sys.exit(app.exec_())

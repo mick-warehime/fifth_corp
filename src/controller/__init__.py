@@ -1,5 +1,4 @@
-from .controller import Controller
-from .launch_controller import LaunchController
-from .settings_controller import SettingsController
-
-__all__ = ['Controller', 'LaunchController', 'SettingsController']
+from .splash_controller import SplashController
+from .decision_controller import DecisionController
+from .combat_controller import CombatController
+__all__ = ['SplashController', 'CombatController', 'DecisionController']

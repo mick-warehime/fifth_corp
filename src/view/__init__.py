@@ -1,6 +1,5 @@
-from .abstract_view import View
-from .pygame_view import PygameView
-from .settings_view import SettingsView
-from .launch_view import LaunchView
+from pyqt.splash_form import Ui_SplashForm
+from pyqt.decision_form import Ui_DecisionForm
+from pyqt.combat_form import Ui_CombatForm
 
-__all__ = ['PygameView', 'SettingsView', 'View', 'LaunchView']
+__all__ = ['Ui_DecisionForm', 'Ui_CombatForm', 'Ui_SplashForm']
