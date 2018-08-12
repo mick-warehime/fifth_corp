@@ -1,0 +1,1 @@
+This folder contains the .ui files and corresponding .py files used to build the pyqt based views. Do not edit the .py files as they are automatically generated. Only edit the .ui files.

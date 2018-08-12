@@ -1,10 +1,8 @@
-from PyQt5 import uic
-
-combat_ui = 'src/view/combat.ui'
-combat_form, combat_view_class = uic.loadUiType(combat_ui)
+from pyqt.combat_form import Ui_CombatForm
+from PyQt5.QtWidgets import QWidget
 
 
-class CombatController(combat_view_class, combat_form):
-    def __init__(self):
-        super(combat_view_class, self).__init__()
+class CombatController(QWidget, Ui_CombatForm):
+    def __init__(self) -> None:
+        super(QWidget, self).__init__()
         self.setupUi(self)
