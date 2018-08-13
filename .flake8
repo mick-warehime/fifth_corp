@@ -1,3 +1,2 @@
 [flake8]
-# ignore = E226 <- Used to ignore any standards we dont like.
 max-line-length = 100
