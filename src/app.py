@@ -2,7 +2,7 @@ import sys
 import logging
 from constants import constants
 from PyQt5.QtWidgets import QApplication
-from controller import SplashController
+from controller import MainWindowController
 
 
 def clear_log(log_file: str) -> None:
@@ -31,6 +31,6 @@ def initialize_logging() -> None:
 if __name__ == '__main__':
     initialize_logging()
     app = QApplication(sys.argv)
-    controller = SplashController()
+    controller = MainWindowController()
     controller.show()
     sys.exit(app.exec_())
