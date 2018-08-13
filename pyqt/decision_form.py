@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file '/Users/Mick/Documents/Projects/fifth_corp/src/view/decision.ui'
+# Form implementation generated from reading ui file '../pyqt/decision.ui'
 #
 # Created by: PyQt5 UI code generator 5.10.1
 #
@@ -10,7 +10,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 
 
 class Ui_DecisionForm(object):
-    def setupUi(self, DecisionForm):  # type ignore
+    def setupUi(self, DecisionForm):
         DecisionForm.setObjectName("DecisionForm")
         DecisionForm.resize(640, 480)
         self.verticalLayoutWidget = QtWidgets.QWidget(DecisionForm)
@@ -35,8 +35,7 @@ class Ui_DecisionForm(object):
         self.retranslateUi(DecisionForm)
         QtCore.QMetaObject.connectSlotsByName(DecisionForm)
 
-    def retranslateUi(self, DecisionForm):  # type ignore
-
+    def retranslateUi(self, DecisionForm):
         _translate = QtCore.QCoreApplication.translate
         DecisionForm.setWindowTitle(_translate("DecisionForm", "Form"))
         self.fight_button.setText(_translate("DecisionForm", "Fight"))

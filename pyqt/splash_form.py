@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file '/Users/Mick/Documents/Projects/fifth_corp/src/view/splash.ui'
+# Form implementation generated from reading ui file '../pyqt/splash.ui'
 #
 # Created by: PyQt5 UI code generator 5.10.1
 #
