@@ -1,7 +1,6 @@
 import controller
 from view import Ui_DecisionForm
 from PyQt5.QtWidgets import QWidget
-import logging
 
 
 class DecisionController(QWidget, Ui_DecisionForm):
