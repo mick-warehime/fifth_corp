@@ -12,5 +12,5 @@ script:
   - mypy -p src --ignore-missing-imports
 
 ## run unit tests and coverage
-  - coverage run -m unittest discover -s src
-  - coverage report -m --include=src* --skip-covered
+  - pytest --cov-report term-missing --cov-config .coveragerc --cov=src src/tests/
+
