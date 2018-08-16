@@ -17,7 +17,7 @@ def initialize_logging() -> None:
     fmt = "%(asctime)s {} [%(levelname)s]  %(message)s".format(constants.VERSION)
     formatter = logging.Formatter(fmt)
     logger = logging.getLogger()
-    logger.setLevel("DEBUG")
+    logger.setLevel("INFO")
 
     file_logger = logging.FileHandler(log_file)
     file_logger.setFormatter(formatter)

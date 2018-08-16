@@ -8,7 +8,7 @@ class MainWindowController(QMainWindow):
     def __init__(self) -> None:
         super(QMainWindow, self).__init__()
         loadUi('src/view/main_window.ui', self)
-        self.set_view(controller.SplashController(self))
+        self.set_view(controller.CombatController(self))
 
     def set_view(self, widget: QWidget) -> None:
         self.takeCentralWidget()
