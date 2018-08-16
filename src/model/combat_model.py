@@ -22,6 +22,3 @@ class CombatModel(object):
 
     def enemy_dead(self):
         return self.enemy_life <= 0
-
-
-
