@@ -14,7 +14,7 @@ class CombatController(QWidget):
         loadUi('src/view/combat.ui', self)
         self.combat_model = CombatModel()
         self.update_display()
-        self.hand = []
+        self.hand: List[Card] = []
         self.create_deck()
 
     def add_card_to_hand(self, card: Card) -> None:
@@ -37,16 +37,16 @@ class CombatController(QWidget):
     def draw_hand(self) -> None:
         self.create_deck()
 
-    def create_deck(self) -> List[Card]:
+    def create_deck(self) -> None:
         for i in range(8):
             c = Card('Card %d' % i, 'Card %d does a thing' % i, self.play_card)
             self.add_card_to_hand(c)
 
-    def update_display(self):
+    def update_display(self) -> None:
         self.player_life.setText('Player Life: {}'.format(self.combat_model.player_life))
         self.enemy_life.setText('Enemy Life: {}'.format(self.combat_model.enemy_life))
 
-    def next_scene(self):
+    def next_scene(self) -> None:
         if self.combat_model.player_dead():
             self.main_window.set_view(controller.CombatController(self.main_window))
         else:
