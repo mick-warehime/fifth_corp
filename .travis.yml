@@ -12,5 +12,6 @@ script:
   - mypy -p src --ignore-missing-imports
 
 ## run unit tests and coverage
+  - export PYTHONPATH=$PYTHONPATH:src
   - pytest --cov-report term-missing --cov-config .coveragerc --cov=src src/tests/
 
