@@ -1,9 +1,9 @@
-import sys
+"""Module for defining and controlling decision scenes."""
 from typing import NamedTuple, Dict, Iterable
 
 from PyQt5.QtGui import QPixmap
 from PyQt5.QtWidgets import QWidget, QApplication, QLabel, QVBoxLayout, \
-    QHBoxLayout, QPushButton, QMainWindow
+    QHBoxLayout, QPushButton
 
 from controller.communication import Communicator
 
@@ -12,31 +12,6 @@ _IMAGE_DIR = '../data/images/'
 DecisionSceneData = NamedTuple('DecisionSceneData',
                                [('prompt', str), ('image_file', str),
                                 ('choices', Dict[str, 'DecisionSceneData'])])
-
-_WIDTH = 800
-_HEIGHT = 600
-
-
-class MainWindow(QMainWindow):
-
-    def __init__(self, initial_scene_data: DecisionSceneData) -> None:
-        super().__init__()
-
-        self.setGeometry(200, 200, _WIDTH, _HEIGHT)
-
-        self.comm = Communicator()
-        self.comm.load_decision_scene.connect(self._change_view_decision)
-
-        self._change_view_decision(initial_scene_data)
-
-    def _change_view_decision(self, scene_data: DecisionSceneData) -> None:
-        self.change_view(DecisionControllerV2(scene_data, self.comm))
-
-    def change_view(self, widget: QWidget) -> None:
-        self.current = widget
-        self.takeCentralWidget()
-        self.setCentralWidget(widget)
-        self.show()
 
 
 class DecisionControllerV2(QWidget):
@@ -59,7 +34,8 @@ class DecisionControllerV2(QWidget):
     def _change_scene(self, data: DecisionSceneData) -> None:
         self.comm.load_decision_scene.emit(data)
 
-    def _decisions_box(self, choices: Dict[str, DecisionSceneData]) -> QVBoxLayout:
+    def _decisions_box(self,
+                       choices: Dict[str, DecisionSceneData]) -> QVBoxLayout:
         bottom_half = QVBoxLayout()
         for description, scene_data in choices.items():
             qbtn = QPushButton(description, self)
@@ -91,7 +67,7 @@ class DecisionControllerV2(QWidget):
         return top_half
 
 
-def _example_scene():
+def example_scene():
     _PROMPT_0 = (
         'You come upon a derelict charging station. Some lights flicker inside'
         ' and your sensors detect motion within. Your audioscopes fainly'
@@ -113,11 +89,3 @@ def _example_scene():
     scene_0 = DecisionSceneData(_PROMPT_0, _IMAGE_0, {'Investigate': scene_1,
                                                       'Robo-mites': scene_2})
     return scene_0
-
-
-if __name__ == '__main__':
-    app = QApplication(sys.argv)
-
-    main_window = MainWindow(_example_scene())
-
-    sys.exit(app.exec_())
