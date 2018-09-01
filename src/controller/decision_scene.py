@@ -30,11 +30,6 @@ DecisionSceneData = NamedTuple('DecisionSceneData',
                                [('prompt', str), ('image_file', str),
                                 ('choices', Dict[str, 'DecisionSceneData'])])
 
-scene_1 = DecisionSceneData(_PROMPT_1, _IMAGE_1, {})
-scene_2 = DecisionSceneData(_PROMPT_2, _IMAGE_2, {})
-scene_0 = DecisionSceneData(_PROMPT_0, _IMAGE_0, {'Investigate': scene_1,
-                                                  'Robo-mites': scene_2})
-
 _WIDTH = 800
 _HEIGHT = 600
 
@@ -126,8 +121,8 @@ class DecisionControllerV2(QWidget):
 
         if image_file:
             pic = QLabel(self)
-            pixmap = QPixmap(_IMAGE_DIR + image_file).scaledToWidth(
-                    _WIDTH * 0.5)
+            width = self.window().size().width() * 0.7
+            pixmap = QPixmap(_IMAGE_DIR + image_file).scaledToWidth(width)
             pic.setPixmap(pixmap)
             top_half.addWidget(pic)
 
@@ -135,6 +130,11 @@ class DecisionControllerV2(QWidget):
 
 
 if __name__ == '__main__':
+    scene_1 = DecisionSceneData(_PROMPT_1, _IMAGE_1, {})
+    scene_2 = DecisionSceneData(_PROMPT_2, _IMAGE_2, {})
+    scene_0 = DecisionSceneData(_PROMPT_0, _IMAGE_0, {'Investigate': scene_1,
+                                                      'Robo-mites': scene_2})
+
     app = QApplication(sys.argv)
 
     main_window = MainWindow(scene_0)
