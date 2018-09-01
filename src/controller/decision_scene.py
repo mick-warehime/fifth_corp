@@ -1,5 +1,4 @@
 """Module for defining and controlling decision scenes."""
-from collections import namedtuple
 from typing import NamedTuple, Dict, Iterable
 
 from PyQt5.QtGui import QPixmap
