@@ -1,4 +1,3 @@
-import os
 import sys
 from typing import NamedTuple, Dict, Iterable
 
@@ -8,23 +7,6 @@ from PyQt5.QtWidgets import QWidget, QApplication, QLabel, QVBoxLayout, \
     QHBoxLayout, QPushButton, QMainWindow
 
 _IMAGE_DIR = '../data/images/'
-
-_PROMPT_0 = (
-    'You come upon a derelict charging station. Some lights flicker inside and'
-    ' your sensors detect motion within. Your audioscopes fainly sense a '
-    ' an alarm signal.')
-_IMAGE_0 = 'derelict_store.png'
-
-_PROMPT_1 = ('The place is empty but seems to have been recently occupied. '
-             'You find some small loot on the ground and see a working power '
-             'outlet.')
-_IMAGE_1 = ''
-
-_PROMPT_2 = ('The place is crawling with small robo-mites! A tech-robot is '
-             'trapped under some fallen debris and is currently in the process'
-             ' of being disassembled. It emits a weak distress beacon, asking'
-             ' for help.')
-_IMAGE_2 = ''
 
 DecisionSceneData = NamedTuple('DecisionSceneData',
                                [('prompt', str), ('image_file', str),
@@ -129,14 +111,33 @@ class DecisionControllerV2(QWidget):
         return top_half
 
 
-if __name__ == '__main__':
+def _example_scene():
+    _PROMPT_0 = (
+        'You come upon a derelict charging station. Some lights flicker inside'
+        ' and your sensors detect motion within. Your audioscopes fainly'
+        ' sense an alarm signal.')
+    _IMAGE_0 = 'derelict_store.png'
+    _PROMPT_1 = (
+        'The place is empty but seems to have been recently occupied. '
+        'You find some small loot on the ground and see a working power '
+        'outlet.')
+    _IMAGE_1 = ''
+    _PROMPT_2 = (
+        'The place is crawling with small robo-mites! A tech-robot is '
+        'trapped under some fallen debris and is currently in the process'
+        ' of being disassembled. It emits a weak distress beacon, asking'
+        ' for help.')
+    _IMAGE_2 = ''
     scene_1 = DecisionSceneData(_PROMPT_1, _IMAGE_1, {})
     scene_2 = DecisionSceneData(_PROMPT_2, _IMAGE_2, {})
     scene_0 = DecisionSceneData(_PROMPT_0, _IMAGE_0, {'Investigate': scene_1,
                                                       'Robo-mites': scene_2})
+    return scene_0
 
+
+if __name__ == '__main__':
     app = QApplication(sys.argv)
 
-    main_window = MainWindow(scene_0)
+    main_window = MainWindow(_example_scene())
 
     sys.exit(app.exec_())
