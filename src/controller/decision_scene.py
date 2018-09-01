@@ -59,7 +59,7 @@ class DecisionControllerV2(QWidget):
     def _change_scene(self, data: DecisionSceneData) -> None:
         self.comm.load_decision_scene.emit(data)
 
-    def _decisions_box(self, choices: Dict[str, DecisionSceneData]) -> None:
+    def _decisions_box(self, choices: Dict[str, DecisionSceneData]) -> QVBoxLayout:
         bottom_half = QVBoxLayout()
         for description, scene_data in choices.items():
             qbtn = QPushButton(description, self)
@@ -74,7 +74,7 @@ class DecisionControllerV2(QWidget):
         # bottom_half.addStretch(0)
         return bottom_half
 
-    def _prompt_box(self, prompt: str, image_file: str) -> None:
+    def _prompt_box(self, prompt: str, image_file: str) -> QHBoxLayout:
         prompt_label = QLabel(prompt, self)
         prompt_label.setWordWrap(True)
 
