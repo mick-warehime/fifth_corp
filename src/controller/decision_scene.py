@@ -18,11 +18,11 @@ class DecisionSceneData(NamedTuple):  # type: ignore
 
 class DecisionControllerV2(QWidget):
 
-    def __init__(self, data: DecisionSceneData, comm: Signals,
+    def __init__(self, data: DecisionSceneData, signals: Signals,
                  *args: Iterable, **kwargs: Dict) -> None:
         super().__init__(*args, **kwargs)
 
-        self.comm = comm
+        self.signals = signals
 
         top_half = self._prompt_box(data.prompt, data.image_file)
         bottom_half = self._decisions_box(data.choices)
@@ -34,7 +34,7 @@ class DecisionControllerV2(QWidget):
         self.setLayout(layout)
 
     def _change_scene(self, data: DecisionSceneData) -> None:
-        self.comm.load_decision_scene.emit(data)
+        self.signals.load_decision_scene.emit(data)
 
     def _decisions_box(self,
                        choices: Dict[str, DecisionSceneData]) -> QVBoxLayout:

@@ -29,13 +29,13 @@ class MainWindow(QMainWindow):
 
         self.setGeometry(200, 200, _WINDOW_WIDTH, _WINDOW_HEIGHT)
 
-        self.comm = Signals()
-        self.comm.load_decision_scene.connect(self._change_view_decision)
+        self.signals = Signals()
+        self.signals.load_decision_scene.connect(self._change_view_decision)
 
         self._change_view_decision(initial_scene_data)
 
     def _change_view_decision(self, scene_data: DecisionSceneData) -> None:
-        self.change_view(DecisionControllerV2(scene_data, self.comm))
+        self.change_view(DecisionControllerV2(scene_data, self.signals))
 
     def change_view(self, widget: QWidget) -> None:
         self.current = widget
