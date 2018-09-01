@@ -1,4 +1,5 @@
 """Module for defining and controlling decision scenes."""
+from collections import namedtuple
 from typing import NamedTuple, Dict, Iterable
 
 from PyQt5.QtGui import QPixmap
@@ -9,9 +10,11 @@ from controller.communication import Communicator
 
 _IMAGE_DIR = '../data/images/'
 
-DecisionSceneData = NamedTuple('DecisionSceneData',
-                               [('prompt', str), ('image_file', str),
-                                ('choices', Dict[str, 'DecisionSceneData'])])
+
+class DecisionSceneData(NamedTuple):  # type: ignore
+    prompt: str
+    image_file: str
+    choices: Dict[str, 'DecisionSceneData']
 
 
 class DecisionControllerV2(QWidget):
@@ -67,7 +70,7 @@ class DecisionControllerV2(QWidget):
         return top_half
 
 
-def example_scene():
+def example_scene() -> DecisionSceneData:
     _PROMPT_0 = (
         'You come upon a derelict charging station. Some lights flicker inside'
         ' and your sensors detect motion within. Your audioscopes fainly'
