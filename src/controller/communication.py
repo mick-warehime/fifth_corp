@@ -2,7 +2,7 @@
 from PyQt5.QtCore import QObject, pyqtSignal
 
 
-class Communicator(QObject):
+class Signals(QObject):
     """
     This is a signal. It has connect and emit methods.
     Usage:

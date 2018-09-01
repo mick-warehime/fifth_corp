@@ -3,7 +3,7 @@ import sys
 from PyQt5.QtWidgets import QMainWindow, QWidget, QApplication
 from PyQt5.uic import loadUi
 import controller
-from controller.communication import Communicator
+from controller.communication import Signals
 from controller.decision_scene import DecisionSceneData, DecisionControllerV2, example_scene
 
 _WINDOW_WIDTH = 800
@@ -29,7 +29,7 @@ class MainWindow(QMainWindow):
 
         self.setGeometry(200, 200, _WINDOW_WIDTH, _WINDOW_HEIGHT)
 
-        self.comm = Communicator()
+        self.comm = Signals()
         self.comm.load_decision_scene.connect(self._change_view_decision)
 
         self._change_view_decision(initial_scene_data)

@@ -5,7 +5,7 @@ from PyQt5.QtGui import QPixmap
 from PyQt5.QtWidgets import QWidget, QApplication, QLabel, QVBoxLayout, \
     QHBoxLayout, QPushButton
 
-from controller.communication import Communicator
+from controller.communication import Signals
 
 _IMAGE_DIR = '../data/images/'
 
@@ -18,7 +18,7 @@ class DecisionSceneData(NamedTuple):  # type: ignore
 
 class DecisionControllerV2(QWidget):
 
-    def __init__(self, data: DecisionSceneData, comm: Communicator,
+    def __init__(self, data: DecisionSceneData, comm: Signals,
                  *args: Iterable, **kwargs: Dict) -> None:
         super().__init__(*args, **kwargs)
 
