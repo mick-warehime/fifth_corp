@@ -1,10 +1,11 @@
 import sys
 from typing import NamedTuple, Dict, Iterable
 
-from PyQt5.QtCore import pyqtSignal, QObject
 from PyQt5.QtGui import QPixmap
 from PyQt5.QtWidgets import QWidget, QApplication, QLabel, QVBoxLayout, \
     QHBoxLayout, QPushButton, QMainWindow
+
+from controller.communication import Communicator
 
 _IMAGE_DIR = '../data/images/'
 
@@ -14,27 +15,6 @@ DecisionSceneData = NamedTuple('DecisionSceneData',
 
 _WIDTH = 800
 _HEIGHT = 600
-
-
-class Communicator(QObject):
-    """
-    This is a signal. It has connect and emit methods.
-    Usage:
-
-    Suppose there is a function my_fun which takes a DecisionSceneData object
-    as input.
-    Then:
-
-    load_decision_scene.connect(my_fun)
-    links this signal to that function.
-
-    When load_decision_scene.emit(data) is invoked,
-    this calls my_fun(data).
-    I.e. a signal is sent out containing data, and is received by my_fun.
-
-
-    """
-    load_decision_scene = pyqtSignal(DecisionSceneData)
 
 
 class MainWindow(QMainWindow):
