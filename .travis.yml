@@ -13,5 +13,5 @@ script:
 
 ## run unit tests and coverage
   - export PYTHONPATH=$PYTHONPATH:src
-  - pytest
+  - pytest --cov-report term-missing --cov-config .coveragerc --cov=src src/tests/
 
