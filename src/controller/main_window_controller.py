@@ -4,7 +4,8 @@ from PyQt5.QtWidgets import QMainWindow, QWidget, QApplication
 from PyQt5.uic import loadUi
 import controller
 from controller.communication import Signals
-from controller.decision_scene import DecisionSceneData, DecisionControllerV2, example_scene
+from controller.decision_scene import DecisionSceneData, DecisionControllerV2, example_scene_data
+
 
 _WINDOW_WIDTH = 800
 _WINDOW_HEIGHT = 600
@@ -47,6 +48,6 @@ class MainWindow(QMainWindow):
 if __name__ == '__main__':
     app = QApplication(sys.argv)
 
-    main_window = MainWindow(example_scene())
+    main_window = MainWindow(example_scene_data())
 
     sys.exit(app.exec_())

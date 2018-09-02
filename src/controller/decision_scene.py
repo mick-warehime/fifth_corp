@@ -1,5 +1,7 @@
 """Module for defining and controlling decision scenes."""
-from typing import NamedTuple, Dict, Iterable
+from typing import Dict
+from typing import List
+from typing import NamedTuple
 
 from PyQt5.QtGui import QPixmap
 from PyQt5.QtWidgets import QWidget, QApplication, QLabel, QVBoxLayout, \
@@ -18,11 +20,11 @@ class DecisionSceneData(NamedTuple):  # type: ignore
 
 class DecisionControllerV2(QWidget):
 
-    def __init__(self, data: DecisionSceneData, signals: Signals,
-                 *args: Iterable, **kwargs: Dict) -> None:
-        super().__init__(*args, **kwargs)
+    def __init__(self, data: DecisionSceneData, signals: Signals) -> None:
+        super().__init__()
 
         self.signals = signals
+        self.buttons: List[QPushButton] = []
 
         top_half = self._prompt_box(data.prompt, data.image_file)
         bottom_half = self._decisions_box(data.choices)
@@ -34,23 +36,24 @@ class DecisionControllerV2(QWidget):
         self.setLayout(layout)
 
     def _change_scene(self, data: DecisionSceneData) -> None:
-        self.signals.load_decision_scene.emit(data)
+        self.signals.emit(data)
 
     def _decisions_box(self,
                        choices: Dict[str, DecisionSceneData]) -> QVBoxLayout:
-        bottom_half = QVBoxLayout()
+        decision_box = QVBoxLayout()
         for description, scene_data in choices.items():
             qbtn = QPushButton(description, self)
             qbtn.clicked.connect(lambda: self._change_scene(scene_data))
             qbtn.resize(qbtn.sizeHint())
-            bottom_half.addWidget(qbtn)
+            self.buttons.append(qbtn)
+            decision_box.addWidget(qbtn)
 
         qbtn_final = QPushButton('Quit', self)
         qbtn_final.clicked.connect(QApplication.instance().quit)
         qbtn_final.resize(qbtn_final.sizeHint())
-        bottom_half.addWidget(qbtn_final)
-        # bottom_half.addStretch(0)
-        return bottom_half
+        decision_box.addWidget(qbtn_final)
+
+        return decision_box
 
     def _prompt_box(self, prompt: str, image_file: str) -> QHBoxLayout:
         prompt_label = QLabel(prompt, self)
@@ -69,7 +72,7 @@ class DecisionControllerV2(QWidget):
         return top_half
 
 
-def example_scene() -> DecisionSceneData:
+def example_scene_data() -> DecisionSceneData:
     _PROMPT_0 = (
         'You come upon a derelict charging station. Some lights flicker inside'
         ' and your sensors detect motion within. Your audioscopes fainly'
