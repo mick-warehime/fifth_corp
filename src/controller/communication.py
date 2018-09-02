@@ -1,5 +1,6 @@
 """Module for transmitting information between widgets."""
 from PyQt5.QtCore import QObject, pyqtSignal
+from typing import Any
 
 
 class Signals(QObject):
@@ -23,3 +24,6 @@ class Signals(QObject):
     # We would pass DecisionSceneData instead of object, but this causes
     # circular import issues.
     load_decision_scene = pyqtSignal(object)
+
+    def emit(self, data: Any) -> None:
+        self.load_decision_scene.emit(data)
