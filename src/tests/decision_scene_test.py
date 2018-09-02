@@ -1,7 +1,7 @@
 from PyQt5 import QtCore
 from controller.decision_scene import DecisionControllerV2
 from controller.decision_scene import example_scene_data
-from mock import MagicMock
+from unittest.mock import MagicMock
 
 
 # you need the magic qtbot to run pytest + qt
