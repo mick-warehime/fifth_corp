@@ -1,9 +1,23 @@
 """Module for transmitting information between widgets."""
 from PyQt5.QtCore import QObject, pyqtSignal
-from typing import Any
 
 
-class Signals(QObject):
+class SignalsAccess(object):
+    """Object with access to global _Signals object."""
+    _signals = None
+
+    @classmethod
+    def initialize(cls) -> None:
+        cls._signals = _Signals()
+
+    @property
+    def signals(self) -> '_Signals':
+        if self._signals is None:
+            raise RuntimeError('SignalsAccess has not been initialized.')
+        return self._signals
+
+
+class _Signals(QObject):
     """
     This is a signal. It has connect and emit methods.
     Usage:
@@ -21,9 +35,4 @@ class Signals(QObject):
 
 
     """
-    # We would pass DecisionSceneData instead of object, but this causes
-    # circular import issues.
-    load_decision_scene = pyqtSignal(object)
-
-    def emit(self, data: Any) -> None:
-        self.load_decision_scene.emit(data)
+    load_scene = pyqtSignal(str)
