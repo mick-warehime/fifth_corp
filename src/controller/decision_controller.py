@@ -2,38 +2,18 @@ from typing import Dict, Any
 
 from PyQt5.QtGui import QPixmap
 
-import controller
-from PyQt5.QtWidgets import QMainWindow, QWidget, QVBoxLayout, QPushButton, \
+from PyQt5.QtWidgets import QWidget, QVBoxLayout, QPushButton, \
     QApplication, QHBoxLayout, QLabel
-from PyQt5.uic import loadUi
 
 from controller.communication import SignalsAccess
 from model.decision_scene import DecisionSceneData
 from model.resolutions import Choice
 from model.scene_library import ScenesAccess
 
-
-class DecisionController(QWidget):
-    def __init__(self, main_window: QMainWindow) -> None:
-        super(QWidget, self).__init__()
-        self.main_window = main_window
-        loadUi('src/view/decision.ui', self)
-        self.fight_button.clicked.connect(self.change)
-        self.back_button.clicked.connect(self.back)
-
-    def change(self) -> None:
-        self.main_window.set_view(
-                controller.CombatController(self.main_window))
-
-    def back(self) -> None:
-        self.main_window.set_view(
-                controller.SplashController(self.main_window))
+_IMAGE_DIR = 'src/data/images/'
 
 
-_IMAGE_DIR = '../data/images/'
-
-
-class DecisionControllerV2(QWidget, ScenesAccess, SignalsAccess):
+class DecisionController(QWidget, ScenesAccess, SignalsAccess):
 
     def __init__(self, data: DecisionSceneData, *args: Any,
                  **kwargs: Any) -> None:

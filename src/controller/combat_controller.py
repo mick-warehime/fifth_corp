@@ -1,17 +1,19 @@
-import controller
+from controller.communication import SignalsAccess
 from model import CombatModel
-from PyQt5.QtWidgets import QMainWindow, QWidget
+from PyQt5.QtWidgets import QWidget
 from PyQt5.uic import loadUi
 from cards import Card
 from typing import List
 
+from model.combat_model import CombatData
 
-class CombatController(QWidget):
 
-    def __init__(self, main_window: QMainWindow) -> None:
+class CombatController(QWidget, SignalsAccess):
+
+    def __init__(self, data: CombatData) -> None:
         super(QWidget, self).__init__()
-        self.main_window = main_window
         loadUi('src/view/combat.ui', self)
+        self._data = data
         self.combat_model = CombatModel()
         self.update_display()
         self.hand: List[Card] = []
@@ -43,11 +45,13 @@ class CombatController(QWidget):
             self.add_card_to_hand(c)
 
     def update_display(self) -> None:
-        self.player_life.setText('Player Life: {}'.format(self.combat_model.player_life))
-        self.enemy_life.setText('Enemy Life: {}'.format(self.combat_model.enemy_life))
+        self.player_life.setText(
+                'Player Life: {}'.format(self.combat_model.player_life))
+        self.enemy_life.setText(
+                'Enemy Life: {}'.format(self.combat_model.enemy_life))
 
     def next_scene(self) -> None:
         if self.combat_model.player_dead():
-            self.main_window.set_view(controller.CombatController(self.main_window))
+            self.signals.load_scene.emit('start')
         else:
-            self.main_window.set_view(controller.SplashController(self.main_window))
+            self.signals.load_scene.emit(self._data.victory_scene)

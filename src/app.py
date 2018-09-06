@@ -2,7 +2,9 @@ import sys
 import logging
 from constants import constants
 from PyQt5.QtWidgets import QApplication
-from controller import MainWindowController
+from controller.communication import SignalsAccess
+from controller.main_window_controller import MainWindow
+from model.scene_library import ScenesAccess, example_scenes_and_resolutions
 
 
 def clear_log(log_file: str) -> None:
@@ -28,9 +30,16 @@ def initialize_logging() -> None:
     logger.addHandler(console_logger)
 
 
+def initialize_globals() -> None:
+    SignalsAccess.initialize()
+    ScenesAccess.load_library(*example_scenes_and_resolutions())
+
+
 if __name__ == '__main__':
     initialize_logging()
     app = QApplication(sys.argv)
-    controller = MainWindowController()
-    controller.show()
+
+    initialize_globals()
+
+    controller = MainWindow()
     sys.exit(app.exec_())

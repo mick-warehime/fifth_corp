@@ -1,4 +1,12 @@
+from typing import NamedTuple
+
 from cards import Card
+from model.interface import SceneData
+
+
+class CombatData(NamedTuple, SceneData):  # type: ignore
+    """Placeholder for data defining a combat"""
+    victory_scene: str
 
 
 class CombatModel(object):
