@@ -1,4 +1,4 @@
-from typing import Dict, Any
+from typing import Dict, Any, List
 
 from PyQt5.QtGui import QPixmap
 
@@ -19,6 +19,7 @@ class DecisionController(QWidget, ScenesAccess, SignalsAccess):
                  **kwargs: Any) -> None:
         super().__init__(*args, **kwargs)
 
+        self.buttons: List[QPushButton] = []
         top_half = self._prompt_box(data.prompt, data.image_file)
         bottom_half = self._decisions_box(data.choices)
 
@@ -35,17 +36,19 @@ class DecisionController(QWidget, ScenesAccess, SignalsAccess):
 
     def _decisions_box(self, choices: Dict[str, str]) -> QVBoxLayout:
         bottom_half = QVBoxLayout()
+
         for description, resolution_name in choices.items():
             qbtn = QPushButton(description, self)
             qbtn.clicked.connect(lambda: self._resolve_scene(resolution_name))
             qbtn.resize(qbtn.sizeHint())
+            self.buttons.append(qbtn)
             bottom_half.addWidget(qbtn)
 
         qbtn_final = QPushButton('Quit', self)
         qbtn_final.clicked.connect(QApplication.instance().quit)
         qbtn_final.resize(qbtn_final.sizeHint())
+        self.buttons.append(qbtn_final)
         bottom_half.addWidget(qbtn_final)
-        # bottom_half.addStretch(0)
         return bottom_half
 
     def _prompt_box(self, prompt: str, image_file: str) -> QHBoxLayout:
