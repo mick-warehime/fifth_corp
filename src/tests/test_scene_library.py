@@ -34,7 +34,7 @@ def test_get_scene():
 
 def test_get_resolution():
     _, res_dict = example_scenes_and_resolutions()
-    res_name = 'res_0'
+    res_name = 'enter'
     assert res_name in res_dict
 
     res_data = MainWindow().library.get_resolution_data(res_name)

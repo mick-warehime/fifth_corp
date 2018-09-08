@@ -26,7 +26,7 @@ class Choice(object):
         self._total_counts = sum(outcome_odds.values())
 
     def resolve(self) -> str:
-        """Probabilitically sample from outcome odds.
+        """Probabilistically sample from outcome odds.
 
         Returns:
             An outcome specified in self._outcome_odds, with probability

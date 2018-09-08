@@ -1,3 +1,4 @@
+from functools import partial
 from typing import Dict, Any, List
 
 from PyQt5.QtGui import QPixmap
@@ -39,7 +40,7 @@ class DecisionController(QWidget, ScenesAccess, SignalsAccess):
 
         for description, resolution_name in choices.items():
             qbtn = QPushButton(description, self)
-            qbtn.clicked.connect(lambda: self._resolve_scene(resolution_name))
+            qbtn.clicked.connect(partial(self._resolve_scene, resolution_name))
             qbtn.resize(qbtn.sizeHint())
             self.buttons.append(qbtn)
             bottom_half.addWidget(qbtn)
