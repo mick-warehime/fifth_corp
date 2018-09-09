@@ -7,13 +7,13 @@ from model.combat_model import CombatData
 from model.decision_scene import DecisionSceneData
 from model.interface import SceneData
 
-_type_to_class = {CombatData: CombatController,
-                  DecisionSceneData: DecisionController}
+_scene_type_to_class = {CombatData: CombatController,
+                        DecisionSceneData: DecisionController}
 
 
 def build_scene(data: SceneData) -> Union[CombatController,
                                           DecisionController]:
-    if type(data) not in _type_to_class:
+    if type(data) not in _scene_type_to_class:
         raise ValueError('Unrecognized data type ({})'.format(type(data)))
 
-    return _type_to_class[type(data)](data)  # type: ignore
+    return _scene_type_to_class[type(data)](data)  # type: ignore

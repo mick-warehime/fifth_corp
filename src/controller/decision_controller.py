@@ -1,15 +1,16 @@
 from functools import partial
-from typing import Dict, Any, List
+from typing import Dict, Any, List, Sequence
 
 from PyQt5.QtGui import QPixmap
 
-from PyQt5.QtWidgets import QWidget, QVBoxLayout, QPushButton, \
-    QApplication, QHBoxLayout, QLabel
+from PyQt5.QtWidgets import QWidget, QVBoxLayout, QPushButton, QHBoxLayout, \
+    QLabel
 
 from controller.communication import SignalsAccess
 from model.decision_scene import DecisionSceneData
 from model.resolutions import Choice
 from model.scene_library import ScenesAccess
+from view.colors import Color
 
 _IMAGE_DIR = 'src/data/images/'
 
@@ -21,7 +22,7 @@ class DecisionController(QWidget, ScenesAccess, SignalsAccess):
         super().__init__(*args, **kwargs)
 
         self.buttons: List[QPushButton] = []
-        top_half = self._prompt_box(data.prompt, data.image_file)
+        top_half = self._prompt_box(data.prompt, data.image_file, data.effects)
         bottom_half = self._decisions_box(data.choices)
 
         layout = QVBoxLayout()
@@ -45,19 +46,26 @@ class DecisionController(QWidget, ScenesAccess, SignalsAccess):
             self.buttons.append(qbtn)
             bottom_half.addWidget(qbtn)
 
-        qbtn_final = QPushButton('Quit', self)
-        qbtn_final.clicked.connect(QApplication.instance().quit)
-        qbtn_final.resize(qbtn_final.sizeHint())
-        self.buttons.append(qbtn_final)
-        bottom_half.addWidget(qbtn_final)
         return bottom_half
 
-    def _prompt_box(self, prompt: str, image_file: str) -> QHBoxLayout:
+    def _prompt_box(self, prompt: str, image_file: str,
+                    effects: Sequence[str]) -> QHBoxLayout:
+
+        left_side = QVBoxLayout()
+
         prompt_label = QLabel(prompt, self)
         prompt_label.setWordWrap(True)
+        left_side.addWidget(prompt_label)
+
+        for effect_name in effects:
+            effect_data = self.library.get_effect_data(effect_name)
+            label = QLabel(effect_data.description, self)
+            label.setWordWrap(True)
+            Color(effect_data.description_color).set_color(label)
+            left_side.addWidget(label)
 
         top_half = QHBoxLayout()
-        top_half.addWidget(prompt_label)
+        top_half.addLayout(left_side)
 
         if image_file:
             pic = QLabel(self)

@@ -4,7 +4,7 @@ from constants import constants
 from PyQt5.QtWidgets import QApplication
 from controller.communication import SignalsAccess
 from controller.main_window_controller import MainWindow
-from model.scene_library import ScenesAccess, example_scenes_and_resolutions
+from model.scene_library import ScenesAccess, example_datas
 
 
 def clear_log(log_file: str) -> None:
@@ -32,7 +32,7 @@ def initialize_logging() -> None:
 
 def initialize_globals() -> None:
     SignalsAccess.initialize()
-    ScenesAccess.load_library(*example_scenes_and_resolutions())
+    ScenesAccess.load_library(*example_datas())
 
 
 if __name__ == '__main__':
